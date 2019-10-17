@@ -1,10 +1,8 @@
 import { getCompetitionTeams } from './http-wrapper.js';
 
 class footballTeams extends HTMLElement {
-    // Get attribute name value
     get competition() { return this.getAttribute('competition'); }
     
-    // Invoked each time the custom element is appended into the DOM
     async connectedCallback() {
         const { teams } = await getCompetitionTeams(this.competition);
         this.innerHTML = this.render(teams);
